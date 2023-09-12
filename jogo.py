@@ -1,9 +1,8 @@
 import re
 import os
 import tkinter as tk
-from tkinter import PhotoImage
-from tkinter import messagebox
-
+from tkinter import PhotoImage, messagebox
+from jogo_da_forca import Forca
 
 class Tela():
     def __init__(self, master):
@@ -133,16 +132,20 @@ class Tela():
             self.janela.title('Visitante')
             self.janela.configure(bg='#3D89E1')
 
+    
             botV = tk.Button(self.janela, image=self.b_volta, command= self.volta, 
             background="#3D89E1", activebackground="#3D89E1", borderwidth=0)
-            botV.pack(padx= 5, pady= 5, anchor= tk.W)
-    
+            botV.grid(row=0, column= 0,padx= 5, pady= 5, sticky= "W")
+
+            forca = Forca(self.janela)
+            forca.grid(row=1, column=0)
+
     def volta(self):
         for widget in self.janela.winfo_children():
                 widget.destroy()
         
         self.telaInicial()
-        
+       
 app = tk.Tk()
 Tela(app)
 app.mainloop()

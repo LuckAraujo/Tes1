@@ -13,11 +13,7 @@ class Forca(Frame):
         self.palavra = None
         self.letras_digitadas = None
         self.palavra_secreta = None
-        self.contador = None
-        
-        master.title("Palavra Secreta Ver")
-        master.resizable(0, 0)
-        master.geometry("800x600")    
+        self.contador = None 
 
         # inicializa widgets do jogo
         self.create_widgets()
@@ -358,6 +354,7 @@ class Forca(Frame):
 
 
 
-forca = Tk()
-app = Forca(forca).grid()
-forca.mainloop()
+def main():
+    forca = Tk()
+    app = Forca(forca).grid()
+    forca.mainloop()
