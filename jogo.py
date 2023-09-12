@@ -1,6 +1,4 @@
 import tkinter as tk
-import ttkbootstrap as ttk
-from ttkbootstrap.constants import *
 import os
 from tkinter import PhotoImage
 
@@ -11,25 +9,36 @@ class Tela():
         self.janela.geometry('800x600')
         self.janela.title('Tela De Play')
         self.janela.configure(bg='#3D89E1')
+
+
+        self.telaInicial()
+
+    def telaInicial(self):
         
+        self.janela.title('Tela De Play')
         pastaAPP = os.path.dirname(__file__)
         img_path = os.path.join(pastaAPP, "imagem", "Logo.png")
         imgLogo = PhotoImage(file=img_path)
-        l_logo = ttk.Label(self.janela, image=imgLogo, background="#3D89E1")
+        l_logo = tk.Label(self.janela, image=imgLogo, background="#3D89E1")
         l_logo.image = imgLogo
-        l_logo.grid(row=0, columnspan= 2, column=0,pady=(40, 0), padx=(20,0))
+        l_logo.pack(pady=(40, 0), padx=(20,0))
 
-        btn1 = ttk.Button(self.janela, text="Entrar", bootstyle=OUTLINE, width=40,  command=self.abrir_categorias)
-        btn1.grid(row=1, column= 0,padx= 20, pady=20)
-        btn2 = ttk.Button(self.janela, text="Cadastrar", bootstyle=OUTLINE, width=40, command=self.abrir_categorias)
-        btn2.grid(row=1, column= 1,padx= 20, pady=20)
-        btn3 = ttk.Button(self.janela, text="Visitante", bootstyle=OUTLINE, width=40, command=self.abrir_categorias)
-        btn3.grid(row=2, columnspan= 2, column=0,padx= 20, pady=20)
+        btn1 = tk.Button(self.janela, text="Entrar",  height=2 ,width=20,  command=self.entrar,
+        bg="#FF8000", activebackground="#FF8000", font=("Arial Black", 10))
+        
+        btn1.pack(padx= 20, pady=20)
+        
+        btn2 = tk.Button(self.janela, text="Cadastrar", height=2 ,width=20, command=self.cadastrar,
+        bg="#FF9933", activebackground="#FF9933", font=("Arial Black", 10))
+        
+        btn2.pack(padx= 20, pady=20)
+        
+        btn3 = tk.Button(self.janela, text="Visitante", height=2 ,width=20, command=self.visitante, 
+        bg="#FFB266", activebackground="#FFB266",font=("Arial Black", 10))
+        
+        btn3.pack(padx= 20, pady=20)
 
-        self.janela.columnconfigure(0, weight=5)
-        self.janela.columnconfigure(1, weight=5)
-        self.janela.columnconfigure(2, weight=1)
-
+        
     def abrir_categorias(self):
             for widget in self.janela.winfo_children():
                 widget.destroy()
@@ -39,12 +48,52 @@ class Tela():
             self.janela.title('Escolha uma Categoria')
             self.janela.configure(bg='#3D89E1')
             
-            style = ttk.Style()
-            style.configure("LetraButton.TButton", padding=10, font=("Helvetica", 12))
-            
-            letraA = ttk.Button(self.janela, text="FDS", style="LetraButton.TButton")
+            letraA = tk.Button(self.janela, text="FDS")
             letraA.pack()
+    
+    def entrar(self):
+            for widget in self.janela.winfo_children():
+                widget.destroy()
+            
+            self.janela = self.janela
+            self.janela.geometry('800x600')
+            self.janela.title('Entrar')
+            self.janela.configure(bg='#3D89E1')
 
-app = ttk.Window(themename='lumen')
+            botV = tk.Button(self.janela, text="Voltar", command= self.volta)
+            botV.grid(row=0, column=0, padx= 5, pady= 5)
+
+
+    
+    def cadastrar(self):
+            for widget in self.janela.winfo_children():
+                widget.destroy()
+            
+            self.janela = self.janela
+            self.janela.geometry('800x600')
+            self.janela.title("Cadastrar")
+            self.janela.configure(bg='#3D89E1')
+
+            botV = tk.Button(self.janela, text="Voltar", command= self.volta)
+            botV.grid(row=0, column=0, padx= 5, pady= 5)
+    
+    def visitante(self):
+            for widget in self.janela.winfo_children():
+                widget.destroy()
+            
+            self.janela = self.janela
+            self.janela.geometry('800x600')
+            self.janela.title('Visitante')
+            self.janela.configure(bg='#3D89E1')
+
+            botV = tk.Button(self.janela, text="Voltar", command= self.volta)
+            botV.grid(row=0, column=0, padx= 5, pady= 5)
+    
+    def volta(self):
+        for widget in self.janela.winfo_children():
+                widget.destroy()
+        self.telaInicial()
+        
+app = tk.Tk()
 Tela(app)
 app.mainloop()
