@@ -83,8 +83,8 @@ class Tela():
 
             l_senha = tk.Label(self.janela, text="Senha",font=("Arial Black", 10), background="#3D89E1")
             l_senha.pack(padx= 5, pady= 5)
-            e_senha = tk.Entry(self.janela, width= 30, show="*")
-            e_senha.pack(padx= 5, pady= (0, 5))
+            self.e_senha = tk.Entry(self.janela, width= 30, show="*")
+            self.e_senha.pack(padx= 5, pady= (0, 5))
 
             b_entrar = tk.Button(self.janela, text= "Logar", font=("Arial Black", 10), 
             bg="#FF9933", activebackground="#FF9933", command= self.abrir_categorias)
@@ -96,13 +96,33 @@ class Tela():
                 widget.destroy()
             
             self.janela = self.janela
-            self.janela.geometry('800x600')
+            self.janela.geometry('400x300')
             self.janela.title("Cadastrar")
             self.janela.configure(bg='#3D89E1')
 
             botV = tk.Button(self.janela, image=self.b_volta, command= self.volta, 
             background="#3D89E1", activebackground="#3D89E1", borderwidth=0)
             botV.pack(padx= 5, pady= 5, anchor= tk.W)
+
+            l_nome = tk.Label(self.janela, text="Nome", font=("Arial Black", 10), background="#3D89E1")
+            l_nome.pack(padx= 5, pady= 5)
+            self.nome = tk.Entry(self.janela, width= 30)
+            self.nome.pack(padx= 5,pady= (0, 5))
+
+            l_email = tk.Label(self.janela, text="Email", font=("Arial Black", 10), background="#3D89E1")
+            l_email.pack(padx= 5, pady= 5)
+            self.e_email = tk.Entry(self.janela, width= 30)
+            self.e_email.pack(padx= 5,pady= (0, 5))
+
+            l_senha = tk.Label(self.janela, text="Senha",font=("Arial Black", 10), background="#3D89E1")
+            l_senha.pack(padx= 5, pady= 5)
+            self.e_senha = tk.Entry(self.janela, width= 30, show="*")
+            self.e_senha.pack(padx= 5, pady= (0, 5))
+
+            b_entrar = tk.Button(self.janela, text= "Criar Conta", font=("Arial Black", 10), 
+            bg="#FF9933", activebackground="#FF9933")
+            b_entrar.pack(padx= 5, pady= 5)
+
     
     def visitante(self):
             for widget in self.janela.winfo_children():
