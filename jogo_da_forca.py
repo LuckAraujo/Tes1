@@ -5,7 +5,7 @@ import sqlite3
 from sqlite3 import Error
 
 class Forca(Frame):
-    def __init__(self, master):
+    def __init__(self, master, dificuldade):
         Frame.__init__(self, master)
         # inicializa variáveis
         self.temas = ['Cores', 'Animais', 'Objetos', 'Paises', 'Programas De TV']
@@ -13,7 +13,8 @@ class Forca(Frame):
         self.palavra = None
         self.letras_digitadas = None
         self.palavra_secreta = None
-        self.contador = None 
+        self.contador = None
+        self.dificuldade = dificuldade
 
         # inicializa widgets do jogo
         self.create_widgets()
@@ -212,7 +213,7 @@ class Forca(Frame):
         
         # Seleciona um tema aleatório
 
-        cursor.execute(f"SELECT pal_palavra FROM palavras WHERE tem_id_fk = {self.tema_id} ORDER BY RANDOM() LIMIT 1")
+        cursor.execute(f"SELECT pal_palavra FROM palavras WHERE tem_id_fk = {self.tema_id} AND pal_dificuldade = ? ORDER BY RANDOM() LIMIT 1", (self.dificuldade,))
         resultado = cursor.fetchone()
         
         if resultado:

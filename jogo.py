@@ -135,16 +135,80 @@ class Tela():
     
             botV = tk.Button(self.janela, image=self.b_volta, command= self.volta, 
             background="#3D89E1", activebackground="#3D89E1", borderwidth=0)
-            botV.grid(row=0, column= 0,padx= 5, pady= 5, sticky= "W")
+            botV.pack(padx= 5, pady= 5, anchor= tk.W)
 
-            forca = Forca(self.janela)
-            forca.grid(row=1, column=0)
+            b_ranque = tk.Button(self.janela, text= "Ranque", font=("Arial Black", 10),
+            bg="#FF9933", activebackground="#FF9933")
+            b_ranque.pack(padx= 5, pady= 5)
+            
+            b_facil = tk.Button(self.janela, text= "Fácil", font=("Arial Black", 10), command= self.dificuldadeF,
+            bg="#FF9933", activebackground="#FF9933")
+            b_facil.pack(padx= 5, pady= 5)
+
+            b_medio = tk.Button(self.janela, text= "Médio", font=("Arial Black", 10), command= self.dificuldadeM,
+            bg="#FF9933", activebackground="#FF9933")
+            b_medio.pack(padx= 5, pady= 5)
+
+            b_dificil = tk.Button(self.janela, text= "difícil", font=("Arial Black", 10), command= self.dificuldadeD,
+            bg="#FF9933", activebackground="#FF9933")
+            b_dificil.pack(padx= 5, pady= 5)
+    
+    def dificuldadeF(self):
+        for widget in self.janela.winfo_children():
+                widget.destroy()
+            
+        self.janela = self.janela
+        self.janela.geometry('800x600')
+        self.janela.title('Forca Fácil')
+        self.janela.configure(bg='#3D89E1')
+        
+        botV = tk.Button(self.janela, image=self.b_volta, command= self.visitante, 
+        background="#3D89E1", activebackground="#3D89E1", borderwidth=0)
+        botV.grid(row=0, column=0, padx= 5, pady= 5, sticky="W")
+
+        forca = Forca(self.janela, "Facil")
+        forca.grid(row=1, column=0)
+    
+    def dificuldadeM(self):
+        for widget in self.janela.winfo_children():
+                widget.destroy()
+            
+        self.janela = self.janela
+        self.janela.geometry('800x600')
+        self.janela.title('Forca Médio')
+        self.janela.configure(bg='#3D89E1')
+        
+        botV = tk.Button(self.janela, image=self.b_volta, command= self.visitante, 
+        background="#3D89E1", activebackground="#3D89E1", borderwidth=0)
+        botV.grid(row=0, column=0, padx= 5, pady= 5, sticky="W")
+
+        forca = Forca(self.janela, "Medio")
+        forca.grid(row=1, column=0)
+
+    
+    def dificuldadeD(self):
+        for widget in self.janela.winfo_children():
+                widget.destroy()
+            
+        self.janela = self.janela
+        self.janela.geometry('800x600')
+        self.janela.title('Forca Difícil')
+        self.janela.configure(bg='#3D89E1')
+        
+        botV = tk.Button(self.janela, image=self.b_volta, command= self.visitante, 
+        background="#3D89E1", activebackground="#3D89E1", borderwidth=0)
+        botV.grid(row=0, column=0, padx= 5, pady= 5, sticky="W")
+
+        forca = Forca(self.janela, "Dificil")
+        forca.grid(row=1, column=0)
 
     def volta(self):
         for widget in self.janela.winfo_children():
                 widget.destroy()
         
         self.telaInicial()
+    
+
        
 app = tk.Tk()
 Tela(app)
